@@ -11,7 +11,15 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to root_path
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append('all_users', 
+                                                   partial: "users/user", 
+                                                   locals: { user: @user }
+                                                  )
+        end
+        format.html { redirect_to root_path }
+      end
     else
       render :new
     end

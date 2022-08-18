@@ -1,11 +1,7 @@
-<section>
-  <h1>All Users</h1>
-  <ul>
-    <% @users.each do |user| %>
-      <li>
-        <p>Name: <%= user.name %></p>
-        <p>Email: <%= user.email %></p>
-      </li>
-    <% end %>
-  </ul>
-</section>
+<h1>All Users</h1>
+
+<turbo-frame id=<%= dom_id User.new %> src='users/new'></turbo-frame>
+
+<ul id="all_users">
+  <%= render partial: 'user', collection: @users %>
+</ul>
