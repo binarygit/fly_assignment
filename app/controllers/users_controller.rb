@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    rand(10000000).times do |i|
+      i + rand(1..20)
+    end
 
     if @user.save
       respond_to do |format|
