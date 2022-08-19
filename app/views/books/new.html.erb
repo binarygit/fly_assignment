@@ -1,0 +1,13 @@
+<h1>Signup</h1>
+
+<turbo-frame id=<%= dom_id(User.new) %>>
+  <%= form_with model: @book, data: { controller: "reset-form", action: "turbo:submit-end->reset-form#reset" } do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  
+    <%= f.label :author %>
+    <%= f.text_field :author %>
+  
+    <%= f.submit %>
+  <% end %>
+</turbo-frame>

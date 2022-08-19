@@ -1,0 +1,7 @@
+<h1>All Books</h1>
+
+<turbo-frame id=<%= dom_id User.new %> src='books/new'></turbo-frame>
+
+<ul id="all_books">
+  <%= render partial: 'book', collection: @books %>
+</ul>
