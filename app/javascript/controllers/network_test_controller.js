@@ -4,16 +4,16 @@ export default class extends Controller {
   static values = { url: String };
   static targets = ["message"];
 
-  test() {
-    let start = new Date();
+  async test() {
+    const startTime = new Date();
 
-    fetch(this.urlValue)
-      .then((response) => response.json())
-      .then((responseData) => {
-        let end = new Date();
-        this.messageTarget.textContent = `The response data is ${responseData} and the operation took ${
-          end.getTime() - start.getTime()
-        } msec`;
-      });
+    const response = await fetch(this.urlValue + '.json');
+    const result = await response.json();
+
+    const endTime = new Date();
+
+    this.messageTarget.textContent = `Operation took ${
+      endTime.getTime() - startTime.getTime()
+    } msec`;
   }
 }

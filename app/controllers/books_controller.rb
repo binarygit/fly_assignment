@@ -9,7 +9,7 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    rand(10000000).times do |i|
+    10000000.times do |i|
       i + rand(1..20)
     end
 
